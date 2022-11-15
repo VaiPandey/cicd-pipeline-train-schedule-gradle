@@ -1,44 +1,35 @@
-defaultTasks 'default_run'
-
-println project.name
-
-/*buildscript {
-    repositories{
-        mavenCentral()
-    }
-    dependencies{
-        classpath group: 'commons-codec', name: 'commons-codec', version: '1.2'
-    }
-}*/
-
-tasks.register('test_one'){
-   // println 'Print this first'
-    doLast{
-        println 'Print this last'
-    }
+plugins {
+  //inlude the nodeJS plugin to execute nodejs and npm tasks
+  id "com.moowork.node" version "1.2.0"
 }
 
-tasks.register('test_two'){
-    doFirst{
-        println 'Second test first block'
-    }
-    doLast{
-        println 'Second test last block'
-    }
+node {
+	download = true
+	version = "9.11.1"
+	npmVersion = "5.6.0"
 }
 
-tasks.register('default_run'){
-    doFirst{
-        println "Print this by defalut"
-    }
+//declare a build task
+task build
+
+//declare a task to create a zip of the app
+task zip(type: Zip) {
+	from ('.') {
+		include "*"
+		include "bin/**"
+		include "data/**"
+		include "node_modules/**"
+		include "public/**"
+		include "routes/**"
+		include "views/**"
+	}
+	destinationDir(file("dist"))
+	baseName "trainSchedule"
 }
 
-/*tasks.register('encoding'){
-    doLast{
-        def byte[] encodedString = new Base64().encode('hello world\n'.getEncoder())
-        println new String(encodedString)
-    }
-}*/
-
-
-test_one.dependsOn test_two
+//declare task dependencies
+build.dependsOn zip
+zip.dependsOn npm_build
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
+npm_build.dependsOn npmInstall
