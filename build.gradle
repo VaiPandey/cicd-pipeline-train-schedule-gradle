@@ -1,15 +1,15 @@
 defaultTasks 'default_run'
 
-println "This is the config phase"
+println name
 
-buildscript {
+/*buildscript {
     repositories{
         mavenCentral()
     }
     dependencies{
         classpath group: 'commons-codec', name: 'commons-codec', version: '1.2'
     }
-}
+}*/
 
 tasks.register('test_one'){
     println 'Print this first'
@@ -33,12 +33,12 @@ tasks.register('default_run'){
     }
 }
 
-tasks.register('encoding'){
+/*tasks.register('encoding'){
     doLast{
         def byte[] encodedString = new Base64().encode('hello world\n'.getEncoder())
         println new String(encodedString)
     }
-}
+}*/
 
 
 test_one.dependsOn test_two
