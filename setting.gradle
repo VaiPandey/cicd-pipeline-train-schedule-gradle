@@ -1,0 +1,3 @@
+rootProject.name = 'cicd-pipeline-train-schedule-gradle'
+
+println 'This is the initialization step for this project'
