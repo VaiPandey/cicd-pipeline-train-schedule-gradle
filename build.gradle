@@ -1,3 +1,5 @@
+defaulTasks 'default_run'
+
 println "This is the config phase"
 
 tasks.register('test_one'){
@@ -13,6 +15,12 @@ tasks.register('test_two'){
     }
     doLast{
         println 'Second test last block'
+    }
+}
+
+tasks.register('default_run'){
+    doFirst{
+        println "Print this by defalut"
     }
 }
 
