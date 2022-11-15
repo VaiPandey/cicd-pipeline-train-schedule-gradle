@@ -35,7 +35,7 @@ tasks.register('default_run'){
 
 tasks.register('encoding'){
     doLast{
-        def byte[] encodedString = new Base64().encode('hello world\n'.getBytes())
+        def byte[] encodedString = new Base64().encode('hello world\n'.getEncoder())
         println new String(encodedString)
     }
 }
