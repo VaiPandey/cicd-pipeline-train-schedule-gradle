@@ -15,3 +15,5 @@ tasks.register('test_two'){
         println 'Second test last block'
     }
 }
+
+test_one.dependsOn test_two
