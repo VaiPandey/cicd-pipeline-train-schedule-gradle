@@ -7,7 +7,7 @@ tasks.register('test_one'){
     }
 }
 
-task.register('test_two'){
+tasks.register('test_two'){
     doFirst{
         println 'Second test first block'
     }
