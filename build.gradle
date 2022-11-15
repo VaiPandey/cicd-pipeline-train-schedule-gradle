@@ -1,0 +1,17 @@
+println "This is the config phase"
+
+tasks.register('test_one'){
+    println 'Print this first'
+    doLast{
+        println 'Print this last'
+    }
+}
+
+task.register('test_two'){
+    doFirst{
+        println 'Second test first block'
+    }
+    doLast{
+        println 'Second test last block'
+    }
+}
