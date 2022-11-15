@@ -1,4 +1,4 @@
-defaulTasks 'default_run'
+defaultTasks 'default_run'
 
 println "This is the config phase"
 
