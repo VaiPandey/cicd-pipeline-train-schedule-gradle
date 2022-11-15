@@ -1,6 +1,6 @@
 defaultTasks 'default_run'
 
-println name
+println project.name
 
 /*buildscript {
     repositories{
