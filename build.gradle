@@ -12,7 +12,7 @@ println project.name
 }*/
 
 tasks.register('test_one'){
-    println 'Print this first'
+   // println 'Print this first'
     doLast{
         println 'Print this last'
     }
