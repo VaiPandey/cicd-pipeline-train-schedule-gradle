@@ -24,4 +24,12 @@ tasks.register('default_run'){
     }
 }
 
+tasks.register('encoding'){
+    doLast{
+        def byte[] encodedString = new Base64().encode('hello world\n'.getBytes())
+        println new String(encodedString)
+    }
+}
+
+
 test_one.dependsOn test_two
